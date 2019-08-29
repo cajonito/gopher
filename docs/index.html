@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>HTML Practice</title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header>
+        <div id="header_inner">
+          <p>
+            Gopherくんは <a href="http://reneefrench.blogspot.com/" target="_blank">Renee French</a> さんがデザインしました。
+          </p>
+          <p>
+            画像は <a href="https://twitter.com/tenntenn" target="_blank">Takuya Ueda</a> さんが作成したものを元に加工したものです。
+          </p>
+        </div>
+      </header>
+      <main>
+        <div id="gopher_image">
+          <div id="gopher">
+            <img src="./image/gopher.svg" alt="gohperくん" />
+            <div id="gopher_right_eye">
+              <img src="./image/gopher_eye.svg" alt="gohperくんの右目" />
+            </div>
+            <div id="gopher_left_eye">
+              <img src="./image/gopher_eye.svg" alt="gohperくんの左目" />
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer></footer>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./javascript/main.js"></script>
+    <script>
+      var gopher = new Gopher(
+        "#gopher",
+        "#gopher_right_eye",
+        "#gopher_left_eye"
+      );
+
+      $(window).on("load mousemove", function(e) {
+        var cX = e.clientX;
+        var cY = e.clientY;
+
+        if (!cX) {
+          cX = $(window).width() / 2;
+          cY = $(window).height() / 2;
+        }
+
+        gopher.update(cX, cY).render();
+      });
+    </script>
+  </body>
+</html>
